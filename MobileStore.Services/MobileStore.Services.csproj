@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MobileStore.Configuration.Common\MobileStore.Configuration.csproj" />
     <ProjectReference Include="..\MobileStore.Api.Model\MobileStore.Api.Model.csproj" />
+    <ProjectReference Include="..\MobileStore.Configuration.Common\MobileStore.Configuration.csproj" />
     <ProjectReference Include="..\MobileStore.Data\MobileStore.Data.csproj" />
   </ItemGroup>
 
