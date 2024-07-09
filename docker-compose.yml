@@ -1,0 +1,18 @@
+version: '3.4'
+services:
+  mobilestore.api:
+    image: '${DOCKER_REGISTRY-}mobilestoreapi'
+    build:
+      context: .
+      dockerfile: MobileStore.Api/Dockerfile
+  mobilestore.email.service:
+    image: '${DOCKER_REGISTRY-}mobilestoreemailservice'
+    build:
+      context: .
+      dockerfile: MobileStore.Email.Service/Dockerfile
+  rabbitmq:
+    image: masstransit/rabbitmq
+    container_name: rabbitmq
+    ports:
+      - '5672:5672'
+      - '15672:15672'
