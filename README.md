@@ -5,4 +5,5 @@
 ## Application backend is deployed as docker containers and the frontend is React-Redux with TypeScript + Chakra UI
 
 ## To run, execute initializeDb.sql script on local instance, register in stripe and put public key in MobileStoreUI project stripeConfig.ts, and private key to according config section in MobileStore.Api project's appsettings.json. Register in MailTrap and put the credentials in MailTrapOptions section in appsettings.json in MobileStore.Email.Service project, and put your email in EmailOptions section.
-## Finally set docker-compose as startup project and run. For front-end - npm i -> npm run start.
+## Finally set docker-compose as startup project and run. 
+## For front-end clone this repository: https://github.com/RosenDev/MobileStoreUI then run: npm i -> npm run start.
