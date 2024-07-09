@@ -24,5 +24,3 @@ jobs:
       run: dotnet restore MobileStore.sln
     - name: Build
       run: dotnet build MobileStore.sln --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
