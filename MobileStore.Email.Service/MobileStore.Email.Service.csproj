@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-MobileStore.Email.Service-f01ebdad-88c0-4076-a518-a054a7876474</UserSecretsId>
@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MobileStore.Configuration.Common\MobileStore.Configuration.csproj" />
-    <ProjectReference Include="..\MobileStore.Email.Service.Model\MobileStore.Email.Service.Model.csproj" />
-    <ProjectReference Include="..\MobileStore.Services\MobileStore.Services.csproj" />
+    <ProjectReference Include="..\MobileStore.Email.Service.Model\MobileStore.Email.Contracts.csproj" />
   </ItemGroup>
 </Project>
+

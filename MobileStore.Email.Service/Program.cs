@@ -1,8 +1,7 @@
 using MassTransit;
 using MobileStore.Configuration;
 using MobileStore.Email.Service.Consumer;
-using MobileStore.Services;
-using MobileStore.Services.Interfaces;
+using MobileStore.Email.Service.Services;
 
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddOptions();

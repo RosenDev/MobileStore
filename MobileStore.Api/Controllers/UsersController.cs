@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MobileStore.Api.Model;
-using MobileStore.Entities;
+using MobileStore.CommandsAndQueries.Customers;
 
 namespace MobileStore.Api.Controllers
 {
@@ -11,30 +12,28 @@ namespace MobileStore.Api.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly SignInManager<MobileStoreUser> signInManager;
-        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly IMediator mediator;
 
-        public UsersController(SignInManager<MobileStoreUser> signInManager, RoleManager<IdentityRole> roleManager)
+        public UsersController(IMediator mediator)
         {
-            this.signInManager = signInManager;
-            this.roleManager = roleManager;
+            this.mediator = mediator;
         }
 
         [Route("roles")]
         [HttpGet]
-        public async Task<ApiResponse<List<string>>> GetUserRoles()
+        public async Task<ApiResponse<List<string>>> GetUserRoles(CancellationToken ct)
         {
-            var currentUser = await signInManager.UserManager.GetUserAsync(signInManager.Context.User)!;
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+            var roles = await mediator.Send(new GetCurrentUserRolesQuery { UserId = userId }, ct);
 
-            return new ApiResponse<List<string>>((await signInManager.UserManager.GetRolesAsync(currentUser)).ToList());
+            return new ApiResponse<List<string>>(roles);
         }
 
         [HttpDelete]
-        public async Task<ApiResponse> DeleteUserAsync()
+        public async Task<ApiResponse> DeleteUserAsync(CancellationToken ct)
         {
-            var currentUser = (await signInManager.UserManager.GetUserAsync(signInManager.Context.User))!;
-            await signInManager.UserManager.DeleteAsync(currentUser);
-            await signInManager.SignOutAsync();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+            await mediator.Send(new DeleteCurrentUserCommand { UserId = userId }, ct);
             return ApiResponse.NoContent;
         }
     }

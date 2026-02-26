@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>7ae2293c-b21f-4ce7-8869-9a16033dba25</UserSecretsId>
@@ -10,9 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.3" />
-    <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -28,7 +26,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MobileStore.CommandsAndQueries\MobileStore.CommandsAndQueries.csproj" />
+    <ProjectReference Include="..\MobileStore.Api.Model\MobileStore.Api.Model.csproj" />
+    <ProjectReference Include="..\MobileStore.Configuration.Common\MobileStore.Configuration.csproj" />
+    <ProjectReference Include="..\MobileStore.Customers\MobileStore.Customers.csproj" />
+    <ProjectReference Include="..\MobileStore.Customers.Contracts\MobileStore.Customers.Contracts.csproj" />
+    <ProjectReference Include="..\MobileStore.Orders\MobileStore.Orders.csproj" />
+    <ProjectReference Include="..\MobileStore.Orders.Contracts\MobileStore.Orders.Contracts.csproj" />
+    <ProjectReference Include="..\MobileStore.Products\MobileStore.Products.csproj" />
+    <ProjectReference Include="..\MobileStore.Products.Contracts\MobileStore.Products.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

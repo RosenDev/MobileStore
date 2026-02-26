@@ -1,11 +1,10 @@
-﻿using MediatR;
+using System.Security.Claims;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MobileStore.Api.Model;
 using MobileStore.Api.Model.Customer;
 using MobileStore.CommandsAndQueries.Customers;
-using MobileStore.Entities;
 
 namespace MobileStore.Api.Controllers
 {
@@ -15,21 +14,16 @@ namespace MobileStore.Api.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly IMediator mediator;
-        private readonly SignInManager<MobileStoreUser> signInManager;
 
-        public CustomersController(
-            IMediator mediator,
-            SignInManager<MobileStoreUser> signInManager
-            )
+        public CustomersController(IMediator mediator)
         {
             this.mediator = mediator;
-            this.signInManager = signInManager;
         }
 
         [HttpGet]
         public async Task<ApiResponse> GetAsync(CancellationToken ct)
         {
-            var userId = signInManager.UserManager.GetUserId(signInManager.Context.User)!;
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
 
             return await mediator.Send(new GetCustomerQuery { UserId = userId }, ct);
         }
@@ -37,7 +31,7 @@ namespace MobileStore.Api.Controllers
         [HttpPost]
         public async Task<ApiResponse> PostAsync([FromBody] CreateCustomerModel customerModel, CancellationToken ct)
         {
-            var userId = signInManager.UserManager.GetUserId(signInManager.Context.User)!;
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
 
             var customerId = await mediator.Send(new CreateCustomerCommand
             {
@@ -59,7 +53,7 @@ namespace MobileStore.Api.Controllers
         [HttpDelete]
         public async Task<ApiResponse> DeleteAsync(CancellationToken ct)
         {
-            var userId = signInManager.UserManager.GetUserId(signInManager.Context.User)!;
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
 
             await mediator.Send(new DeleteCustomerCommand { UserId = userId }, ct);
 

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="8.2.3" />
+    <PackageReference Include="MediatR" Version="12.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.5" />
+    <PackageReference Include="Stripe.net" Version="44.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MobileStore.Configuration.Common\MobileStore.Configuration.csproj" />
+    <ProjectReference Include="..\MobileStore.Customers.Contracts\MobileStore.Customers.Contracts.csproj" />
+    <ProjectReference Include="..\MobileStore.Email.Service.Model\MobileStore.Email.Contracts.csproj" />
+    <ProjectReference Include="..\MobileStore.Orders.Contracts\MobileStore.Orders.Contracts.csproj" />
+    <ProjectReference Include="..\MobileStore.Products.Contracts\MobileStore.Products.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
+

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -20,7 +20,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MobileStore.Entities\MobileStore.Entities.csproj" />
+    <Compile Include="..\MobileStore.Customers\Domain\IEntity.cs" Link="Domain\IEntity.cs" />
+    <Compile Include="..\MobileStore.Customers\Domain\MobileStoreUser.cs" Link="Domain\MobileStoreUser.cs" />
+    <Compile Include="..\MobileStore.Customers\Domain\Customer.cs" Link="Domain\Customer.cs" />
+    <Compile Include="..\MobileStore.Orders\Domain\Order.cs" Link="Domain\Order.cs" />
+    <Compile Include="..\MobileStore.Orders\Domain\OrderStatus.cs" Link="Domain\OrderStatus.cs" />
+    <Compile Include="..\MobileStore.Orders\Domain\ProductsOrder.cs" Link="Domain\ProductsOrder.cs" />
+    <Compile Include="..\MobileStore.Products\Domain\Product.cs" Link="Domain\Product.cs" />
+    <Compile Include="..\MobileStore.Products\Domain\ProductCategory.cs" Link="Domain\ProductCategory.cs" />
+    <Compile Include="..\MobileStore.Products\Domain\ProductsProductCategory.cs" Link="Domain\ProductsProductCategory.cs" />
   </ItemGroup>
 
 </Project>

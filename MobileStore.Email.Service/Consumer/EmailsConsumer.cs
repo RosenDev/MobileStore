@@ -1,10 +1,10 @@
-﻿using MassTransit;
+using MassTransit;
 using MobileStore.Email.Service.Model;
-using MobileStore.Services.Interfaces;
+using MobileStore.Email.Service.Services;
 
 namespace MobileStore.Email.Service.Consumer
 {
-    public class EmailsConsumer : IConsumer<EmailModel>
+    internal sealed class EmailsConsumer : IConsumer<EmailModel>
     {
         private readonly IEmailSender emailSender;
 
